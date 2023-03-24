@@ -2,6 +2,7 @@ package baseball.domain;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import baseball.domain.gamenumbercreator.GameNumberCreator;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 

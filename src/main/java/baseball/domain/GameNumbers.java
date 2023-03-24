@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.domain.gamenumbercreator.GameNumberCreator;
 import java.util.List;
 
 public class GameNumbers {
@@ -7,13 +8,13 @@ public class GameNumbers {
     private static final int MAX_LENGTH = 3;
     private final List<GameNumber> numbers;
 
-    public static GameNumbers from(GameNumberCreator numberCreator) {
-        return new GameNumbers(numberCreator.create());
-    }
-
     private GameNumbers(List<GameNumber> numbers) {
         validateLength(numbers);
         this.numbers = numbers;
+    }
+
+    public static GameNumbers from(GameNumberCreator numberCreator) {
+        return new GameNumbers(numberCreator.create());
     }
 
     private void validateLength(List<GameNumber> numbers) {

@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.domain.gamenumbercreator;
 
 import java.util.List;
 import org.assertj.core.api.Assertions;

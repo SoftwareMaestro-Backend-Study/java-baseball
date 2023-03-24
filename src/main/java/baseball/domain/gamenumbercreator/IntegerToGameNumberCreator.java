@@ -1,5 +1,6 @@
-package baseball.domain;
+package baseball.domain.gamenumbercreator;
 
+import baseball.domain.GameNumber;
 import java.util.List;
 import java.util.stream.Collectors;
 
