@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Objects;
 
 public class GameNumber {
@@ -18,6 +19,11 @@ public class GameNumber {
         if (value < MIN_VALUE || value > MAX_VALUE) {
             throw new IllegalArgumentException(String.format("[ERROR] 야구게임 숫자는 %d일 수 없습니다", value));
         }
+    }
+
+    public static GameNumber createRandomNumber() {
+        final int number = Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE);
+        return new GameNumber(number);
     }
 
     @Override

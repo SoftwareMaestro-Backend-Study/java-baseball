@@ -18,12 +18,12 @@ public class GameNumbers {
     }
 
     public static GameNumbers from(GameNumberCreator numberCreator) {
-        return new GameNumbers(numberCreator.create());
+        return new GameNumbers(numberCreator.create(MAX_LENGTH));
     }
 
     private void validateLength(List<GameNumber> numbers) {
         if (numbers.size() != MAX_LENGTH) {
-            throw new IllegalArgumentException(String.format("[ERROR] 게임 숫자는 %d 자리를 초과할 수 없습니다.", MAX_LENGTH));
+            throw new IllegalArgumentException(String.format("[ERROR] 게임 숫자는 %d 자리여야합니다.", MAX_LENGTH));
         }
     }
 

@@ -4,5 +4,5 @@ import baseball.domain.GameNumber;
 import java.util.List;
 
 public interface GameNumberCreator {
-    List<GameNumber> create();
+    List<GameNumber> create(int maxLength);
 }

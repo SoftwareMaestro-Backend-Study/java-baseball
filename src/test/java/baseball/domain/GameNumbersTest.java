@@ -44,7 +44,7 @@ class GameNumbersTest {
     @MethodSource("invalidGameNumbers")
     void 게임_넘버가_3자리가_아니면_예외를_던진다(List<GameNumber> gameNumbers) {
         // given
-        GameNumberCreator creator = () -> gameNumbers;
+        GameNumberCreator creator = maxLength -> gameNumbers;
 
         assertThatThrownBy(() -> GameNumbers.from(creator))
                 .isInstanceOf(IllegalArgumentException.class);
@@ -54,7 +54,7 @@ class GameNumbersTest {
     void 중복된_게임_넘버가_존재하면_예외를_던진다() {
         // given
         final List<GameNumber> gameNumbers = List.of(new GameNumber(2), new GameNumber(2), new GameNumber(3));
-        GameNumberCreator creator = () -> gameNumbers;
+        GameNumberCreator creator = maxLength -> gameNumbers;
 
         // when & then
         assertThatThrownBy(() -> GameNumbers.from(creator))
@@ -65,8 +65,8 @@ class GameNumbersTest {
     @MethodSource("numbers")
     void 게임_넘버들로_게임_결과를_생성할_수_있다(List<GameNumber> com, List<GameNumber> player, GameResult result) {
         // given
-        final GameNumbers computerNumber = GameNumbers.from(() -> com);
-        final GameNumbers playerNumber = GameNumbers.from(() -> player);
+        final GameNumbers computerNumber = GameNumbers.from(maxLength -> com);
+        final GameNumbers playerNumber = GameNumbers.from(maxLength -> player);
 
         // when & then
         assertThat(computerNumber.calculateResult(playerNumber))

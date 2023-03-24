@@ -29,4 +29,12 @@ public enum GameResult {
                 .orElseThrow(() -> new IllegalArgumentException(
                         String.format("[ERROR] %d 스트라이크 %d 볼에 해달하는 결과는 존재하지 않습니다.", strike, ball)));
     }
+
+    public int getStrike() {
+        return strike;
+    }
+
+    public int getBall() {
+        return ball;
+    }
 }
