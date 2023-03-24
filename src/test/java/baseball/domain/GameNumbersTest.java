@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import baseball.domain.gamenumbercreator.GameNumberCreator;
 import java.util.List;
 import java.util.stream.Stream;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -45,6 +46,17 @@ class GameNumbersTest {
         // given
         GameNumberCreator creator = () -> gameNumbers;
 
+        assertThatThrownBy(() -> GameNumbers.from(creator))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 중복된_게임_넘버가_존재하면_예외를_던진다() {
+        // given
+        final List<GameNumber> gameNumbers = List.of(new GameNumber(2), new GameNumber(2), new GameNumber(3));
+        GameNumberCreator creator = () -> gameNumbers;
+
+        // when & then
         assertThatThrownBy(() -> GameNumbers.from(creator))
                 .isInstanceOf(IllegalArgumentException.class);
     }
