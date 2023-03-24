@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import baseball.domain.gamenumbercreator.GameNumberCreator;
@@ -18,6 +19,26 @@ class GameNumbersTest {
         );
     }
 
+    public static Stream<Arguments> numbers() {
+        final List<GameNumber> computerNumbers = List.of(new GameNumber(1), new GameNumber(2), new GameNumber(3));
+
+        return Stream.of(
+                Arguments.of(
+                        computerNumbers,
+                        List.of(new GameNumber(1), new GameNumber(2), new GameNumber(3)),
+                        GameResult.THREE_STRIKE),
+                Arguments.of(
+                        computerNumbers,
+                        List.of(new GameNumber(2), new GameNumber(1), new GameNumber(3)),
+                        GameResult.ONE_STRIKE_TWO_BALL),
+                Arguments.of(
+                        computerNumbers,
+                        List.of(new GameNumber(7), new GameNumber(8), new GameNumber(9)),
+                        GameResult.ZERO)
+        );
+
+    }
+
     @ParameterizedTest
     @MethodSource("invalidGameNumbers")
     void 게임_넘버가_3자리가_아니면_예외를_던진다(List<GameNumber> gameNumbers) {
@@ -26,5 +47,17 @@ class GameNumbersTest {
 
         assertThatThrownBy(() -> GameNumbers.from(creator))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @ParameterizedTest
+    @MethodSource("numbers")
+    void 게임_넘버들로_게임_결과를_생성할_수_있다(List<GameNumber> com, List<GameNumber> player, GameResult result) {
+        // given
+        final GameNumbers computerNumber = GameNumbers.from(() -> com);
+        final GameNumbers playerNumber = GameNumbers.from(() -> player);
+
+        // when & then
+        assertThat(computerNumber.calculateResult(playerNumber))
+                .isEqualTo(result);
     }
 }
