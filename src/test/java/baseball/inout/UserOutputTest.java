@@ -37,37 +37,37 @@ class UserOutputTest {
         output.initMessage();
 
         // then
-        assertThat(outputMessage.toString()).isEqualTo("숫자 야구 게임을 시작합니다.");
+        assertThat(outputMessage.toString().trim()).isEqualTo("숫자 야구 게임을 시작합니다.");
     }
 
-    @Test
-    @DisplayName("statusMessage 테스트 - 1볼")
+
     @ParameterizedTest
-    @ValueSource(ints = {0,1,2})
+    @DisplayName("statusMessage 테스트 - 1볼")
+    @ValueSource(ints = {0, 1, 2})
     void statusMessage(int strike) {
         // when
-        output.statusMessage(new GameStatus(1,strike));
+        output.statusMessage(new GameStatus(1, strike));
 
         // then
         if (strike == 0)
-            assertThat(outputMessage.toString()).isEqualTo("1볼");
+            assertThat(outputMessage.toString().trim()).isEqualTo("1볼");
         else
-            assertThat(outputMessage.toString()).isEqualTo("1볼 "+strike+"스트라이크");
+            assertThat(outputMessage.toString().trim()).isEqualTo("1볼 " + strike + "스트라이크");
     }
 
-    @Test
-    @DisplayName("statusMessage 테스트 - 3스트라이크, 낫싱")
+
     @ParameterizedTest
-    @ValueSource(ints = {0,3})
+    @DisplayName("statusMessage 테스트 - 3스트라이크, 낫싱")
+    @ValueSource(ints = {0, 3})
     void statusMessage2(int strike) {
         // when
-        output.statusMessage(new GameStatus(0,strike));
+        output.statusMessage(new GameStatus(0, strike));
 
         // then
         if (strike == 0)
-            assertThat(outputMessage.toString()).isEqualTo("낫싱");
+            assertThat(outputMessage.toString().trim()).isEqualTo("낫싱");
         else
-            assertThat(outputMessage.toString()).isEqualTo("3스트라이크");
+            assertThat(outputMessage.toString().trim()).isEqualTo("3스트라이크");
     }
 
     @Test
@@ -76,7 +76,7 @@ class UserOutputTest {
         output.endMessage();
 
         // then
-        assertThat(outputMessage.toString()).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        assertThat(outputMessage.toString().trim()).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
 }
