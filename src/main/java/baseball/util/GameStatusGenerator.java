@@ -11,8 +11,7 @@ public class GameStatusGenerator {
 
     public static GameStatus generate(String input) {
         validateTheNumberOf(input);
-        int status = input.charAt(0) - '0';
-        validateInteger(status);
+        int status = Convertor.toInteger(input);
         validateRange(status);
         return new GameStatus(status);
     }
@@ -20,12 +19,6 @@ public class GameStatusGenerator {
     private static void validateTheNumberOf(String input) {
         if (input.length() != THE_NUMBER_OF_GAME_STATUS) {
             throw new IllegalArgumentException("1자리 값이 아닙니다.");
-        }
-    }
-
-    private static void validateInteger(int status) {
-        if (status < 0 || status > 9) {
-            throw new IllegalArgumentException("정수가 아닌 값이 포함되어 있습니다.");
         }
     }
 

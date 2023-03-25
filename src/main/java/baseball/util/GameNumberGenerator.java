@@ -9,6 +9,7 @@ import java.util.List;
 public class GameNumberGenerator {
 
     private static final int THE_NUMBER_OF_GAME_NUMBER = 3;
+    private static final String DELIMITER = "";
 
     private GameNumberGenerator() {
     }
@@ -16,11 +17,10 @@ public class GameNumberGenerator {
     public static GameNumbers generate(String input) {
         List<GameNumber> gameNumbers = new ArrayList<>();
         validateTheNumberOf(input);
-        for (int i = 0; i < THE_NUMBER_OF_GAME_NUMBER; i++) {
-            int each = input.charAt(i) - '0';
-            validateInteger(each);
-            validateRange(each);
-            gameNumbers.add(new GameNumber(each));
+        for (String each : input.split(DELIMITER)) {
+            int gameNumber = Convertor.toInteger(each);
+            validateRange(gameNumber);
+            gameNumbers.add(new GameNumber(gameNumber));
         }
         return new GameNumbers(gameNumbers);
     }
@@ -28,12 +28,6 @@ public class GameNumberGenerator {
     private static void validateTheNumberOf(String input) {
         if (input.length() != THE_NUMBER_OF_GAME_NUMBER) {
             throw new IllegalArgumentException("3자리 값이 아닙니다.");
-        }
-    }
-
-    private static void validateInteger(int each) {
-        if (each < 0 || each > 9) {
-            throw new IllegalArgumentException("정수가 아닌 값이 포함되어 있습니다.");
         }
     }
 
