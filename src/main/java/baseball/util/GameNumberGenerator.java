@@ -16,7 +16,7 @@ public class GameNumberGenerator {
     public static GameNumbers generate(String input) {
         List<GameNumber> gameNumbers = new ArrayList<>();
         validateTheNumberOf(input);
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < THE_NUMBER_OF_GAME_NUMBER; i++) {
             int each = input.charAt(i) - '0';
             validateInteger(each);
             validateRange(each);
