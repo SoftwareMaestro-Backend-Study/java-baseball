@@ -11,7 +11,9 @@ public class Application {
             playGame();
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            if (Console.readLine().equals("2")) {
+
+            final RestartMessage restartMessage = new RestartMessage(Console.readLine());
+            if (restartMessage.isEnd()) {
                 System.out.println("게임 종료");
                 break;
             }
@@ -25,7 +27,9 @@ public class Application {
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             String playerInput = Console.readLine();
+
             GameResult result = gameService.findResult(playerInput);
+
             String answer = getResultComment(result);
             System.out.println(answer);
             if (result.equals(GameResult.THREE_STRIKE)) {
