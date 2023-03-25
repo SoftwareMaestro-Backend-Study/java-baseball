@@ -23,7 +23,7 @@ public class NumberBaseballGame implements Game {
         String input = Input.readGameNumber();
         GameNumbers gameNumbers = new GameNumbers(GameNumberGenerator.generate(input));
         GameResult gameResult = new GameResult(GameResultGenerator.generate(gameNumbers.getComparingResult(computer)));
-        System.out.println(gameResult.getValue());
+        Output.printResult(gameResult.getValue());
         if (gameResult.isEnd()) {
             return;
         }
