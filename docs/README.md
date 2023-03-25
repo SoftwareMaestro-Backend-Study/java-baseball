@@ -21,7 +21,7 @@
 - [x] 게임이 종료되면 재진행 여부를 묻는다.
     - [x] 재진행 여부를 입력받는다.
         - 재진행 여부는 1 또는 2인 정수다.
-        - [ ] 입력 값에서 공백을 제거한다.
+        - [x] 입력 값에서 공백을 제거한다.
         - [ ] 1자리가 아니면 에러가 발생한다. => `IllegalArgumentException`
         - [ ] 정수가 아닌 값을 포함하면 에러가 발생한다. => `IllegalArgumentException`
         - [ ] 1~2 범위를 벗어나면 에러가 발생한다. => `IllegalArgumentException`
