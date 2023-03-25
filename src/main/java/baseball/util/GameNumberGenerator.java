@@ -1,6 +1,7 @@
 package baseball.util;
 
 import baseball.domain.GameNumber;
+import baseball.domain.GameNumbers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ public class GameNumberGenerator {
     private GameNumberGenerator() {
     }
 
-    public static List<GameNumber> generate(String input) {
+    public static GameNumbers generate(String input) {
         List<GameNumber> gameNumbers = new ArrayList<>();
         validateTheNumberOf(input);
         for (int i = 0; i < 3; i++) {
@@ -21,7 +22,7 @@ public class GameNumberGenerator {
             validateRange(each);
             gameNumbers.add(new GameNumber(each));
         }
-        return gameNumbers;
+        return new GameNumbers(gameNumbers);
     }
 
     private static void validateTheNumberOf(String input) {

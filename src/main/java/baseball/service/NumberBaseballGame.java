@@ -21,8 +21,8 @@ public class NumberBaseballGame implements Game {
 
     private void play(List<Integer> computer) {
         String input = Input.readGameNumber();
-        GameNumbers gameNumbers = new GameNumbers(GameNumberGenerator.generate(input));
-        GameResult gameResult = new GameResult(GameResultGenerator.generate(gameNumbers.getComparingResult(computer)));
+        GameNumbers gameNumbers = GameNumberGenerator.generate(input);
+        GameResult gameResult = GameResultGenerator.generate(gameNumbers.getComparingResult(computer));
         Output.printResult(gameResult.getValue());
         if (gameResult.isEnd()) {
             return;
