@@ -42,5 +42,20 @@ public class Application {
                 comparingResult[2]++;
             }
         }
+        StringBuilder result = new StringBuilder();
+        if (comparingResult[2] == 3) {
+            result.append("낫싱");
+        } else {
+            if (comparingResult[0] != 0) {
+                result.append(comparingResult[0]).append("볼 ");
+            }
+            if (comparingResult[1] != 0) {
+                result.append(comparingResult[1]).append("스트라이크");
+            }
+        }
+        if (comparingResult[1] == 3) {
+            result.append("\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
+        System.out.println(result);
     }
 }
