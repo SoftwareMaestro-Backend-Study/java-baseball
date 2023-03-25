@@ -3,7 +3,6 @@ package baseball.service;
 import baseball.domain.GameNumbers;
 import baseball.domain.GameResult;
 import baseball.util.*;
-import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
@@ -31,13 +30,11 @@ public class NumberBaseballGame implements Game {
     }
 
     private void askPlayAgain() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String gameProgressStatus = Console.readLine();
-        String gameProgressStatusWithoutBlank = gameProgressStatus.replaceAll(" ", "");
-        if (gameProgressStatusWithoutBlank.length() != 1) {
+        String gameProgressStatus = Input.readGameStatus();
+        if (gameProgressStatus.length() != 1) {
             throw new IllegalArgumentException("1자리 값이 아닙니다.");
         }
-        int gameProgressStatusValue = gameProgressStatusWithoutBlank.charAt(0) - '0';
+        int gameProgressStatusValue = gameProgressStatus.charAt(0) - '0';
         if (gameProgressStatusValue < 0 || gameProgressStatusValue > 9) {
             throw new IllegalArgumentException("정수가 아닌 값이 포함되어 있습니다.");
         }
