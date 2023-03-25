@@ -2,6 +2,7 @@ package baseball.service;
 
 import baseball.domain.GameNumbers;
 import baseball.domain.GameResult;
+import baseball.domain.GameStatus;
 import baseball.util.*;
 
 import java.util.List;
@@ -30,18 +31,8 @@ public class NumberBaseballGame implements Game {
     }
 
     private void askPlayAgain() {
-        String gameProgressStatus = Input.readGameStatus();
-        if (gameProgressStatus.length() != 1) {
-            throw new IllegalArgumentException("1자리 값이 아닙니다.");
-        }
-        int gameProgressStatusValue = gameProgressStatus.charAt(0) - '0';
-        if (gameProgressStatusValue < 0 || gameProgressStatusValue > 9) {
-            throw new IllegalArgumentException("정수가 아닌 값이 포함되어 있습니다.");
-        }
-        if (gameProgressStatusValue != 1 && gameProgressStatusValue != 2) {
-            throw new IllegalArgumentException("1 또는 2 이외의 숫자가 포함되어 있습니다.");
-        }
-        if (gameProgressStatusValue == 1) {
+        GameStatus gameStatus = GameStatusGenerator.generate(Input.readGameStatus());
+        if (gameStatus.isRestart()) {
             start();
         }
     }
