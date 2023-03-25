@@ -1,6 +1,6 @@
 package baseball.service;
 
-import baseball.domain.GameNumber;
+import baseball.domain.GameNumbers;
 import baseball.util.GameNumberGenerator;
 import baseball.util.Input;
 import baseball.util.Output;
@@ -23,18 +23,8 @@ public class NumberBaseballGame implements Game {
 
     private void play(List<Integer> computer) {
         String input = Input.readGameNumber();
-        List<GameNumber> gameNumbers = GameNumberGenerator.getGameNumbers(input);
-        int[] comparingResult = new int[3];
-        for (int i = 0; i < 3; i++) {
-            int number = gameNumbers.get(i).getValue();
-            if (computer.contains(number) && computer.indexOf(number) != i) {
-                comparingResult[0]++;
-            } else if (computer.contains(number) && computer.indexOf(number) == i) {
-                comparingResult[1]++;
-            } else {
-                comparingResult[2]++;
-            }
-        }
+        GameNumbers gameNumbers = new GameNumbers(GameNumberGenerator.getGameNumbers(input));
+        int[] comparingResult = gameNumbers.getComparingResult(computer);
         StringBuilder result = new StringBuilder();
         if (comparingResult[2] == 3) {
             result.append("낫싱");
