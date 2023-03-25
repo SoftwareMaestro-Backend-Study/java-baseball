@@ -38,9 +38,8 @@ class SingleGameTest {
             new GameStatus(0, 3)
     ));
 
-    @Test
-    @DisplayName("singleTurn 동작 테스트")
     @ParameterizedTest
+    @DisplayName("singleTurn 동작 테스트")
     @ValueSource(ints = {0, 1, 2, 3, 4})
     void singleTurn(int i) {
         // when
