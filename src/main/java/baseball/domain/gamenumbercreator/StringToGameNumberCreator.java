@@ -15,14 +15,18 @@ public class StringToGameNumberCreator implements GameNumberCreator {
 
     @Override
     public List<GameNumber> create(int maxLength) {
-        if (values.length() != maxLength) {
-            throw new IllegalArgumentException(String.format("[ERROR] %s는 %d 자리수가 아닙니다.", values, maxLength));
-        }
+        validteLength(maxLength);
 
         return Arrays.stream(values.split(""))
                 .map(this::parseInt)
                 .map(GameNumber::new)
                 .collect(Collectors.toList());
+    }
+
+    private void validteLength(int maxLength) {
+        if (values.length() != maxLength) {
+            throw new IllegalArgumentException(String.format("[ERROR] %s는 %d 자리수가 아닙니다.", values, maxLength));
+        }
     }
 
     private Integer parseInt(String value) {
