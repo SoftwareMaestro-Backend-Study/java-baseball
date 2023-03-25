@@ -25,3 +25,4 @@
         - [x] 1자리가 아니면 에러가 발생한다. => `IllegalArgumentException`
         - [x] 정수가 아닌 값을 포함하면 에러가 발생한다. => `IllegalArgumentException`
         - [x] 1~2 범위를 벗어나면 에러가 발생한다. => `IllegalArgumentException`
+    - [ ] 게임을 재진행 또는 종료한다.
