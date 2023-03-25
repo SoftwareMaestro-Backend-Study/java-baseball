@@ -22,5 +22,11 @@ public class Application {
         if (inputWithoutBlank.length() != 3) {
             throw new IllegalArgumentException("3자리 값이 아닙니다.");
         }
+        for (int i = 0; i < 3; i++) {
+            int each = inputWithoutBlank.charAt(i) - '0';
+            if (each < 0 || each > 9) {
+                throw new IllegalArgumentException("정수가 아닌 값이 포함되어 있습니다.");
+            }
+        }
     }
 }

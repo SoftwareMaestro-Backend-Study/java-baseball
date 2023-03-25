@@ -10,7 +10,7 @@
     - 숫자는 1~9 사이의 3자리 정수다.
     - [x] 입력 값에서 공백을 제거한다.
     - [x] 3자리가 아니면 에러가 발생한다. => `IllegalArgumentException`
-    - [ ] 정수가 아닌 값을 포함하면 에러가 발생한다. => `IllegalArgumentException`
+    - [x] 정수가 아닌 값을 포함하면 에러가 발생한다. => `IllegalArgumentException`
     - [ ] 1~9 범위를 벗어나면 에러가 발생한다. => `IllegalArgumentException`
 - [ ] 랜덤 숫자와 입력받은 숫자를 비교한다.
     - 같은 수가 같은 자리에 있으면 스트라이크, 같은 수가 다른 자리에 있으면 볼, 같은 수가 전혀 없으면 낫싱
