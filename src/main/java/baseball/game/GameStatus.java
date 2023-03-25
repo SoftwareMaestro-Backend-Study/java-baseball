@@ -23,4 +23,8 @@ public class GameStatus {
     public int hashCode() {
         return Objects.hash(ball, strike);
     }
+
+    public boolean isCorrect() {
+        return (strike == 3 && ball == 0);
+    }
 }

@@ -20,12 +20,13 @@ public class SingleGame {
         computer = list;
     }
 
-
     public GameStatus singleTurn(List<Integer> player){
+        int strike = 0, ball = 0;
+        for (int i = 0; i < player.size(); i++) {
+            if (computer.get(i) == player.get(i)) strike ++;
+            else if (computer.contains(player.get(i))) ball ++;
+        }
 
-
-        return new GameStatus(0,0);
+        return new GameStatus(ball, strike);
     }
-
-
 }
