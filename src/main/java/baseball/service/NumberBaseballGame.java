@@ -1,10 +1,8 @@
 package baseball.service;
 
 import baseball.domain.GameNumbers;
-import baseball.util.GameNumberGenerator;
-import baseball.util.Input;
-import baseball.util.Output;
-import baseball.util.RandomNumberGenerator;
+import baseball.domain.GameResult;
+import baseball.util.*;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
@@ -24,23 +22,9 @@ public class NumberBaseballGame implements Game {
     private void play(List<Integer> computer) {
         String input = Input.readGameNumber();
         GameNumbers gameNumbers = new GameNumbers(GameNumberGenerator.getGameNumbers(input));
-        int[] comparingResult = gameNumbers.getComparingResult(computer);
-        StringBuilder result = new StringBuilder();
-        if (comparingResult[2] == 3) {
-            result.append("낫싱");
-        } else {
-            if (comparingResult[0] != 0) {
-                result.append(comparingResult[0]).append("볼 ");
-            }
-            if (comparingResult[1] != 0) {
-                result.append(comparingResult[1]).append("스트라이크");
-            }
-        }
-        if (comparingResult[1] == 3) {
-            result.append("\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        }
-        System.out.println(result);
-        if (comparingResult[1] == 3) {
+        GameResult gameResult = new GameResult(GameResultGenerator.generate(gameNumbers.getComparingResult(computer)));
+        System.out.println(gameResult.getValue());
+        if (gameResult.isEnd()) {
             return;
         }
         play(computer);
