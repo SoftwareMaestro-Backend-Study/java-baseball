@@ -53,9 +53,9 @@ class UserInputTest {
         assertThat(list).isEqualTo(compare);
     }
 
-    @Test
-    @DisplayName("숫자 입력 예외 테스트")
+
     @ParameterizedTest
+    @DisplayName("숫자 입력 예외 테스트")
     @ValueSource(strings = {"111", "122", "1325", "a11"})
     void getNumErrors(String input) {
         // given
@@ -67,10 +67,10 @@ class UserInputTest {
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Test
-    @DisplayName("게임진행 입력 동작 테스트")
+
     @ParameterizedTest
-    @ValueSource(strings = {"0", "1"})
+    @DisplayName("게임진행 입력 동작 테스트")
+    @ValueSource(strings = {"1", "2"})
     void isContinue(String input) {
         // given
         enterInput(input);
@@ -82,10 +82,10 @@ class UserInputTest {
         assertThat(cmd).isEqualTo( input.equals("1") );
     }
 
-    @Test
-    @DisplayName("게임진행 입력 예외 테스트")
+
     @ParameterizedTest
-    @ValueSource(strings = {"111", "2", "0", "a"})
+    @DisplayName("게임진행 입력 예외 테스트")
+    @ValueSource(strings = {"111", "3", "0", "a"})
     void isContinueError(String input) {
         // given
         enterInput(input);
