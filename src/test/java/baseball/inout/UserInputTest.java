@@ -35,9 +35,8 @@ class UserInputTest {
         System.setOut(System.out); // 원상복귀
     }
 
-    @Test
-    @DisplayName("숫자 입력 동작 테스트")
     @ParameterizedTest
+    @DisplayName("숫자 입력 동작 테스트")
     @ValueSource(strings = {"123", "145", "671"})
     void getNum(String input) {
         // given
