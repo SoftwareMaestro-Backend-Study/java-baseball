@@ -1,4 +1,4 @@
-package baseball.io;
+package baseball.util;
 
 public class Output {
 

@@ -1,6 +1,6 @@
 package baseball.service;
 
-import baseball.io.Output;
+import baseball.util.Output;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
