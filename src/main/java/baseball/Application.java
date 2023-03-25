@@ -31,5 +31,16 @@ public class Application {
                 throw new IllegalArgumentException("1~9 범위를 벗어나는 숫자가 포함되어 있습니다.");
             }
         }
+        int[] comparingResult = new int[3];
+        for (int i = 0; i < 3; i++) {
+            int number = inputWithoutBlank.charAt(i) - '0';
+            if (computer.contains(number) && computer.indexOf(number) != i) {
+                comparingResult[0]++;
+            } else if (computer.contains(number) && computer.indexOf(number) == i) {
+                comparingResult[1]++;
+            } else {
+                comparingResult[2]++;
+            }
+        }
     }
 }
