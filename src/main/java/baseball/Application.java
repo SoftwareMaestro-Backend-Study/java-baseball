@@ -18,5 +18,6 @@ public class Application {
             }
         }
         String input = Console.readLine();
+        String inputWithoutBlank = input.replaceAll(" ", "");
     }
 }
