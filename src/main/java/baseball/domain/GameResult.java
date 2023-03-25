@@ -15,6 +15,6 @@ public class GameResult {
     }
 
     public boolean isEnd() {
-        return value.equals(GAME_END_CONDITION);
+        return value.contains(GAME_END_CONDITION);
     }
 }
