@@ -1,5 +1,7 @@
 package baseball.util;
 
+import baseball.domain.GameResult;
+
 public class GameResultGenerator {
 
     private static final int BALL = 0;
@@ -9,9 +11,9 @@ public class GameResultGenerator {
     private GameResultGenerator() {
     }
 
-    public static String generate(int[] comparingResult) {
+    public static GameResult generate(int[] comparingResult) {
         if (comparingResult[NOTHING] == 3) {
-            return "낫싱";
+            return new GameResult("낫싱");
         }
         StringBuilder result = new StringBuilder();
         if (comparingResult[BALL] != 0) {
@@ -23,6 +25,6 @@ public class GameResultGenerator {
         if (comparingResult[STRIKE] == 3) {
             result.append("\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
-        return result.toString();
+        return new GameResult(result.toString());
     }
 }
