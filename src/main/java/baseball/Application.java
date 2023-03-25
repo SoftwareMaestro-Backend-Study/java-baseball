@@ -19,6 +19,7 @@ public class Application {
                 }
             }
             while (true) {
+                System.out.print("숫자를 입력해주세요 : ");
                 String input = Console.readLine();
                 String inputWithoutBlank = input.replaceAll(" ", "");
                 if (inputWithoutBlank.length() != 3) {
