@@ -49,7 +49,7 @@ public class Application {
         }
 
         if (strike != 0) {
-            answer.append(result.getStrike());
+            answer.append(strike);
             answer.append("스트라이크");
         }
 
