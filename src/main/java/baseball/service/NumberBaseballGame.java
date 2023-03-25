@@ -1,5 +1,6 @@
 package baseball.service;
 
+import baseball.util.Input;
 import baseball.util.Output;
 import baseball.util.RandomNumberGenerator;
 import camp.nextstep.edu.missionutils.Console;
@@ -19,8 +20,7 @@ public class NumberBaseballGame implements Game {
     }
 
     private void play(List<Integer> computer) {
-        System.out.print("숫자를 입력해주세요 : ");
-        String input = Console.readLine();
+        String input = Input.readGameNumber();
         String inputWithoutBlank = input.replaceAll(" ", "");
         if (inputWithoutBlank.length() != 3) {
             throw new IllegalArgumentException("3자리 값이 아닙니다.");
