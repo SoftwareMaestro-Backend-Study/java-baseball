@@ -19,5 +19,8 @@ public class Application {
         }
         String input = Console.readLine();
         String inputWithoutBlank = input.replaceAll(" ", "");
+        if (inputWithoutBlank.length() != 3) {
+            throw new IllegalArgumentException("3자리 값이 아닙니다.");
+        }
     }
 }

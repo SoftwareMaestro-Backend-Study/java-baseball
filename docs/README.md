@@ -9,7 +9,7 @@
 - [x] 숫자를 입력받는다.
     - 숫자는 1~9 사이의 3자리 정수다.
     - [x] 입력 값에서 공백을 제거한다.
-    - [ ] 3자리가 아니면 에러가 발생한다. => `IllegalArgumentException`
+    - [x] 3자리가 아니면 에러가 발생한다. => `IllegalArgumentException`
     - [ ] 정수가 아닌 값을 포함하면 에러가 발생한다. => `IllegalArgumentException`
     - [ ] 1~9 범위를 벗어나면 에러가 발생한다. => `IllegalArgumentException`
 - [ ] 랜덤 숫자와 입력받은 숫자를 비교한다.
