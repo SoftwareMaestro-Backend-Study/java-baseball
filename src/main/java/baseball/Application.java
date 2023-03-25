@@ -72,5 +72,8 @@ public class Application {
         if (gameProgressStatusValue < 0 || gameProgressStatusValue > 9) {
             throw new IllegalArgumentException("정수가 아닌 값이 포함되어 있습니다.");
         }
+        if (gameProgressStatusValue != 1 && gameProgressStatusValue != 2) {
+            throw new IllegalArgumentException("1 또는 2 이외의 숫자가 포함되어 있습니다.");
+        }
     }
 }
