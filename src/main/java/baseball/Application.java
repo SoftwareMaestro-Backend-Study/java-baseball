@@ -27,6 +27,9 @@ public class Application {
             if (each < 0 || each > 9) {
                 throw new IllegalArgumentException("정수가 아닌 값이 포함되어 있습니다.");
             }
+            if (each == 0) {
+                throw new IllegalArgumentException("1~9 범위를 벗어나는 숫자가 포함되어 있습니다.");
+            }
         }
     }
 }
