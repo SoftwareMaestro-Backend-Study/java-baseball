@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import baseball.domain.gamenumbercreator.GameNumberCreator;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
@@ -14,7 +15,7 @@ public class GameNumbers {
     private GameNumbers(List<GameNumber> numbers) {
         validateLength(numbers);
         validateDuplicate(numbers);
-        this.numbers = numbers;
+        this.numbers = new ArrayList<>(numbers);
     }
 
     public static GameNumbers from(GameNumberCreator numberCreator) {
