@@ -7,7 +7,7 @@ public class GameNumbers {
 
     private static final int BALL = 0;
     private static final int STRIKE = 1;
-    private static final int NOTING = 2;
+    private static final int NOTHING = 2;
 
     private List<GameNumber> gameNumbers;
 
@@ -24,7 +24,7 @@ public class GameNumbers {
             } else if (isStrike(computer, order, number)) {
                 comparingResult[STRIKE]++;
             } else {
-                comparingResult[NOTING]++;
+                comparingResult[NOTHING]++;
             }
         }
         return comparingResult;
