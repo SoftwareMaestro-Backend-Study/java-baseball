@@ -12,7 +12,7 @@ public class GameNumberGenerator {
     private GameNumberGenerator() {
     }
 
-    public static List<GameNumber> getGameNumbers(String input) {
+    public static List<GameNumber> generate(String input) {
         List<GameNumber> gameNumbers = new ArrayList<>();
         validateTheNumberOf(input);
         for (int i = 0; i < 3; i++) {
