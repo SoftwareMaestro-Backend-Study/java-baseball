@@ -65,5 +65,8 @@ public class Application {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String gameProgressStatus = Console.readLine();
         String gameProgressStatusWithoutBlank = gameProgressStatus.replaceAll(" ", "");
+        if (gameProgressStatusWithoutBlank.length() != 1) {
+            throw new IllegalArgumentException("1자리 값이 아닙니다.");
+        }
     }
 }
