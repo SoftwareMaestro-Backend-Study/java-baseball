@@ -1,5 +1,7 @@
 package baseball.service;
 
+import baseball.domain.GameNumber;
+import baseball.util.GameNumberGenerator;
 import baseball.util.Input;
 import baseball.util.Output;
 import baseball.util.RandomNumberGenerator;
@@ -21,22 +23,10 @@ public class NumberBaseballGame implements Game {
 
     private void play(List<Integer> computer) {
         String input = Input.readGameNumber();
-        String inputWithoutBlank = input.replaceAll(" ", "");
-        if (inputWithoutBlank.length() != 3) {
-            throw new IllegalArgumentException("3자리 값이 아닙니다.");
-        }
-        for (int i = 0; i < 3; i++) {
-            int each = inputWithoutBlank.charAt(i) - '0';
-            if (each < 0 || each > 9) {
-                throw new IllegalArgumentException("정수가 아닌 값이 포함되어 있습니다.");
-            }
-            if (each == 0) {
-                throw new IllegalArgumentException("1~9 범위를 벗어나는 숫자가 포함되어 있습니다.");
-            }
-        }
+        List<GameNumber> gameNumbers = GameNumberGenerator.getGameNumbers(input);
         int[] comparingResult = new int[3];
         for (int i = 0; i < 3; i++) {
-            int number = inputWithoutBlank.charAt(i) - '0';
+            int number = gameNumbers.get(i).getValue();
             if (computer.contains(number) && computer.indexOf(number) != i) {
                 comparingResult[0]++;
             } else if (computer.contains(number) && computer.indexOf(number) == i) {
