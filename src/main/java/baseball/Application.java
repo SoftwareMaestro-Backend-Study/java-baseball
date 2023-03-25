@@ -68,5 +68,9 @@ public class Application {
         if (gameProgressStatusWithoutBlank.length() != 1) {
             throw new IllegalArgumentException("1자리 값이 아닙니다.");
         }
+        int gameProgressStatusValue = gameProgressStatusWithoutBlank.charAt(0) - '0';
+        if (gameProgressStatusValue < 0 || gameProgressStatusValue > 9) {
+            throw new IllegalArgumentException("정수가 아닌 값이 포함되어 있습니다.");
+        }
     }
 }
