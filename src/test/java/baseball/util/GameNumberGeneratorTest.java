@@ -11,7 +11,7 @@ public class GameNumberGeneratorTest {
 
     @DisplayName("형식 외 입력 시 예외 발생")
     @ParameterizedTest
-    @ValueSource(strings = {"1234", "12-", "120"})
+    @ValueSource(strings = {"1234", "12-", "120", "122"})
     void 잘못된_입력(String input) {
         assertThatThrownBy(() -> GameNumberGenerator.generate(input))
                 .isInstanceOf(IllegalArgumentException.class);
