@@ -31,7 +31,7 @@ public class NumberBaseballGame implements Game {
     }
 
     private void askPlayAgain() {
-        GameStatus gameStatus = GameStatusGenerator.generate(Input.readGameStatus());
+        GameStatus gameStatus = new GameStatus(Convertor.toInteger(Input.readGameStatus()));
         if (gameStatus.isRestart()) {
             start();
         }

@@ -3,14 +3,22 @@ package baseball.domain;
 public class GameStatus {
 
     private static final int RESTART = 1;
+    private static final int END = 2;
 
-    private int status;
+    private final int status;
 
     public GameStatus(int status) {
+        validateRange(status);
         this.status = status;
     }
 
     public boolean isRestart() {
         return status == RESTART;
+    }
+
+    private static void validateRange(int status) {
+        if (status != RESTART && status != END) {
+            throw new IllegalArgumentException("1 또는 2 이외의 숫자가 포함되어 있습니다.");
+        }
     }
 }
