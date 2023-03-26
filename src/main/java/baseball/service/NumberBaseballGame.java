@@ -22,7 +22,7 @@ public class NumberBaseballGame implements Game {
     private void play(List<Integer> computer) {
         String input = Input.readGameNumber();
         GameNumbers gameNumbers = GameNumberGenerator.generate(input);
-        GameResult gameResult = GameResultGenerator.generate(gameNumbers.getComparingResult(computer));
+        GameResult gameResult = GameResult.from(gameNumbers.getComparingResult(computer));
         Output.printResult(gameResult.getValue());
         if (gameResult.isEnd()) {
             return;
