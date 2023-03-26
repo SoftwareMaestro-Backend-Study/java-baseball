@@ -14,7 +14,7 @@ public class GameResultGeneratorTest {
         // given
         int[] comparingResult = {0, 0, 3};
         // when
-        GameResult gameResult = GameResultGenerator.generate(comparingResult);
+        GameResult gameResult = GameResult.from(comparingResult);
         // then
         assertThat(gameResult.getValue())
                 .isEqualTo("낫싱");
@@ -26,7 +26,7 @@ public class GameResultGeneratorTest {
         // given
         int[] comparingResult = {0, 2, 0};
         // when
-        GameResult gameResult = GameResultGenerator.generate(comparingResult);
+        GameResult gameResult = GameResult.from(comparingResult);
         // then
         assertThat(gameResult.getValue())
                 .isEqualTo("2스트라이크");
@@ -38,7 +38,7 @@ public class GameResultGeneratorTest {
         // given
         int[] comparingResult = {1, 0, 0};
         // when
-        GameResult gameResult = GameResultGenerator.generate(comparingResult);
+        GameResult gameResult = GameResult.from(comparingResult);
         // then
         assertThat(gameResult.getValue())
                 .isEqualTo("1볼 ");
