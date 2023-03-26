@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class GameNumbers {
@@ -14,6 +15,7 @@ public class GameNumbers {
 
     public GameNumbers(List<GameNumber> gameNumbers) {
         validateTheNumberOf(gameNumbers);
+        validateDuplication(gameNumbers);
         this.gameNumbers = new ArrayList<>(gameNumbers);
     }
 
@@ -35,6 +37,12 @@ public class GameNumbers {
     private static void validateTheNumberOf(List<GameNumber> gameNumbers) {
         if (gameNumbers.size() != THE_NUMBER_OF_GAME_NUMBER) {
             throw new IllegalArgumentException("3자리 값이 아닙니다.");
+        }
+    }
+
+    private void validateDuplication(List<GameNumber> gameNumbers) {
+        if (gameNumbers.size() != new HashSet<>(gameNumbers).size()) {
+            throw new IllegalArgumentException("중복되는 값이 포함되어 있습니다.");
         }
     }
 
