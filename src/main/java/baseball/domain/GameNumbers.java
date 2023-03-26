@@ -5,13 +5,15 @@ import java.util.List;
 
 public class GameNumbers {
 
+    private static final int THE_NUMBER_OF_GAME_NUMBER = 3;
     private static final int BALL = 0;
     private static final int STRIKE = 1;
     private static final int NOTHING = 2;
 
-    private List<GameNumber> gameNumbers;
+    private final List<GameNumber> gameNumbers;
 
     public GameNumbers(List<GameNumber> gameNumbers) {
+        validateTheNumberOf(gameNumbers);
         this.gameNumbers = new ArrayList<>(gameNumbers);
     }
 
@@ -28,6 +30,12 @@ public class GameNumbers {
             }
         }
         return comparingResult;
+    }
+
+    private static void validateTheNumberOf(List<GameNumber> gameNumbers) {
+        if (gameNumbers.size() != THE_NUMBER_OF_GAME_NUMBER) {
+            throw new IllegalArgumentException("3자리 값이 아닙니다.");
+        }
     }
 
     private boolean isStrike(List<Integer> computer, int order, int number) {
