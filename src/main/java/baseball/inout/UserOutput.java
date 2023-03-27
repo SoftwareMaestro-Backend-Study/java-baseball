@@ -4,11 +4,14 @@ import baseball.game.model.GameStatus;
 
 public class UserOutput {
 
-    public void initMessage() {
+    private UserOutput() {
+    }
+
+    public static void initMessage() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public void printStatus(GameStatus status) {
+    public static void printStatus(GameStatus status) {
         if (status.ball == 0 && status.strike == 0)
             System.out.println("낫싱");
         else if (status.ball == 0)
@@ -20,7 +23,7 @@ public class UserOutput {
 
     }
 
-    public void printEndMessage() {
+    public static void printEndMessage() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 

@@ -12,31 +12,26 @@ import java.util.List;
 
 public class GameService {
 
-    private static UserInput userInput;
-    private static UserOutput userOutput;
-
     GameBall computer;
 
     public GameService() {
         computer = GameBall.createRandomBall();
-        userInput = new UserInput();
-        userOutput = new UserOutput();
     }
 
     public void playSingleGame() {
         boolean isContinue = true;
 
         while (isContinue) {
-            GameBall playNum = GameBall.createBall(userInput.getNum());
+            GameBall playNum = GameBall.createBall(UserInput.getNum());
             GameStatus gameStatus = computer.getStatus(playNum);
-            userOutput.printStatus(gameStatus);
+            UserOutput.printStatus(gameStatus);
             isContinue = gameStatus.isContinue();
         }
-        userOutput.printEndMessage();
+        UserOutput.printEndMessage();
     }
 
     public GameCommand getCommand() {
-        return GameCommand.getCommand(userInput.isContinue());
+        return GameCommand.getCommand(UserInput.isContinue());
     }
 
 }
