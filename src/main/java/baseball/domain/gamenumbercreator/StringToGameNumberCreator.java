@@ -15,7 +15,7 @@ public class StringToGameNumberCreator implements GameNumberCreator {
 
     @Override
     public List<GameNumber> create(int maxLength) {
-        validteLength(maxLength);
+        validateLength(maxLength);
 
         return Arrays.stream(values.split(""))
                 .map(this::parseInt)
@@ -23,7 +23,7 @@ public class StringToGameNumberCreator implements GameNumberCreator {
                 .collect(Collectors.toList());
     }
 
-    private void validteLength(int maxLength) {
+    private void validateLength(int maxLength) {
         if (values.length() != maxLength) {
             throw new IllegalArgumentException(String.format("[ERROR] %s는 %d 자리수가 아닙니다.", values, maxLength));
         }
