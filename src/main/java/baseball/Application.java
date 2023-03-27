@@ -1,44 +1,22 @@
 package baseball;
 
-import baseball.game.GameStatus;
-import baseball.game.SingleGame;
+import baseball.game.model.GameCommand;
+import baseball.game.model.GameStatus;
+import baseball.game.GameService;
 import baseball.inout.UserInput;
 import baseball.inout.UserOutput;
 
 import java.util.List;
 
 public class Application {
-    private static UserInput userInput;
-    private static UserOutput userOutput;
-
     public static void main(String[] args) {
-        boolean isContinue = true;
+        GameCommand command = GameCommand.CONTINUE;
 
-        startGame();
-        while (isContinue)
-            isContinue = playSingleGame();
-    }
-
-    private static void startGame() {
-        userInput = new UserInput();
-        userOutput = new UserOutput();
-
-        userOutput.initMessage();
-    }
-
-    private static boolean playSingleGame() {
-        SingleGame singleGame = new SingleGame();
-
-        boolean isCorrect = false;
-
-        while (!isCorrect) {
-            List<Integer> playNum = userInput.getNum();
-            GameStatus gameStatus = singleGame.singleTurn(playNum);
-            userOutput.statusMessage(gameStatus);
-            isCorrect = gameStatus.isCorrect();
+        while (command.isContinue()){
+            GameService gameService = new GameService();
+            gameService.playSingleGame();
+            command = gameService.getCommand();
         }
-
-        userOutput.endMessage();
-        return userInput.isContinue();
     }
+
 }
