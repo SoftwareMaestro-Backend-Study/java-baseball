@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.util.Convertor;
+
 public class GameStatus {
 
     private static final int RESTART = 1;
@@ -7,9 +9,13 @@ public class GameStatus {
 
     private final int status;
 
-    public GameStatus(int status) {
+    private GameStatus(int status) {
         validateRange(status);
         this.status = status;
+    }
+
+    public static GameStatus from(String input) {
+        return new GameStatus(Convertor.toInteger(input));
     }
 
     public boolean isRestart() {
