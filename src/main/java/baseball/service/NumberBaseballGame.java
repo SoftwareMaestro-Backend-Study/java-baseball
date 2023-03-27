@@ -1,13 +1,12 @@
 package baseball.service;
 
-import baseball.domain.GameNumbers;
-import baseball.domain.GameResult;
-import baseball.domain.GameStatus;
-import baseball.util.*;
-
-import java.util.List;
+import baseball.domain.*;
+import baseball.util.Input;
+import baseball.util.Output;
 
 public class NumberBaseballGame implements Game {
+
+    private static final GameNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
 
     public void run() {
         Output.printStartMessage();
@@ -15,24 +14,24 @@ public class NumberBaseballGame implements Game {
     }
 
     private void start() {
-        play(RandomNumberGenerator.generate());
+        play(GameNumbers.from(randomNumberGenerator));
         askPlayAgain();
     }
 
-    private void play(List<Integer> computer) {
-        String input = Input.readGameNumber();
-        GameNumbers gameNumbers = GameNumberGenerator.generate(input);
-        GameResult gameResult = GameResult.from(gameNumbers.getComparingResult(computer));
-        Output.printResult(gameResult.getValue());
-        if (gameResult.isEnd()) {
-            return;
+    private void play(GameNumbers computer) {
+        while (true) {
+            GameNumberGenerator userNumberGenerator = new UserNumberGenerator(Input.readGameNumber());
+            GameNumbers user = GameNumbers.from(userNumberGenerator);
+            GameResult gameResult = user.compare(computer);
+            Output.printResult(gameResult.getValue());
+            if (gameResult.isEnd()) {
+                break;
+            }
         }
-        play(computer);
     }
 
     private void askPlayAgain() {
-        GameStatus gameStatus = new GameStatus(Convertor.toInteger(Input.readGameStatus()));
-        if (gameStatus.isRestart()) {
+        if (GameStatus.from(Input.readGameStatus()).isRestart()) {
             start();
         }
     }
