@@ -1,4 +1,4 @@
-package baseball.game;
+package baseball.game.model;
 
 import java.util.Objects;
 
@@ -9,6 +9,10 @@ public class GameStatus {
     public GameStatus(int ball, int strike) {
         this.ball = ball;
         this.strike = strike;
+    }
+
+    public boolean isContinue() {
+        return !(strike == 3 && ball == 0);
     }
 
     @Override
@@ -24,7 +28,4 @@ public class GameStatus {
         return Objects.hash(ball, strike);
     }
 
-    public boolean isCorrect() {
-        return (strike == 3 && ball == 0);
-    }
 }
