@@ -12,12 +12,11 @@ public enum GameCommand {
         this.number = number;
     }
 
-    public static GameCommand getCommand (String userInput) {
-        int commandNumber ;
-        try{
+    public static GameCommand getCommand(String userInput) {
+        int commandNumber;
+        try {
             commandNumber = Integer.parseInt(userInput);
-        }
-        catch (NumberFormatException ex){
+        } catch (NumberFormatException ex) {
             throw new IllegalArgumentException("숫자를 입력해야 합니다.");
         }
 
@@ -32,4 +31,5 @@ public enum GameCommand {
     public boolean isContinue() {
         return this == CONTINUE;
     }
+
 }
