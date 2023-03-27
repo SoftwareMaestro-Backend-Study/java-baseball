@@ -1,12 +1,11 @@
-package baseball.util;
+package baseball.domain;
 
-import baseball.domain.GameResult;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class GameResultGeneratorTest {
+public class GameResultTest {
 
     @DisplayName("같은 수가 없으면 낫싱 출력")
     @Test
