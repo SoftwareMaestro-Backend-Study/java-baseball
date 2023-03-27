@@ -33,7 +33,7 @@ public class GameNumber {
 
     private static void validateRange(int value) {
         if (value < MIN_VALUE || value > MAX_VALUE) {
-            throw new IllegalArgumentException("1~9 범위를 벗어나는 숫자가 포함되어 있습니다.");
+            throw new IllegalArgumentException(String.format("%d~%d 범위를 벗어나는 숫자가 포함되어 있습니다.", MIN_VALUE, MAX_VALUE));
         }
     }
 }
