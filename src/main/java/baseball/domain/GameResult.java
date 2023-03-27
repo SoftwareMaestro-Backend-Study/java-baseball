@@ -5,9 +5,11 @@ public class GameResult {
     private static final int THE_NUMBER_OF_GAME_NUMBER = 3;
 
     private final String value;
+    private final boolean isEnd;
 
-    private GameResult(String value) {
+    private GameResult(String value, boolean isEnd) {
         this.value = value;
+        this.isEnd = isEnd;
     }
 
     public static GameResult from(int strike, int ball, int theNumberOfGameNumber) {
@@ -24,7 +26,7 @@ public class GameResult {
         if (strike == theNumberOfGameNumber) {
             result.append("\n").append(theNumberOfGameNumber).append("개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
-        return new GameResult(result.toString());
+        return new GameResult(result.toString(), strike == THE_NUMBER_OF_GAME_NUMBER);
     }
 
     public String getValue() {
@@ -32,6 +34,6 @@ public class GameResult {
     }
 
     public boolean isEnd() {
-        return value.contains(GAME_END_CONDITION);
+        return isEnd;
     }
 }
