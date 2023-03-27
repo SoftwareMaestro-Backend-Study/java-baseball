@@ -1,6 +1,6 @@
 package baseball.inout;
 
-import baseball.game.GameStatus;
+import baseball.game.model.GameStatus;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -12,7 +12,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class UserOutputTest {
     private static ByteArrayOutputStream outputMessage;
@@ -46,7 +45,7 @@ class UserOutputTest {
     @ValueSource(ints = {0, 1, 2})
     void statusMessage(int strike) {
         // when
-        output.statusMessage(new GameStatus(1, strike));
+        output.printStatus(new GameStatus(1, strike));
 
         // then
         if (strike == 0)
@@ -61,7 +60,7 @@ class UserOutputTest {
     @ValueSource(ints = {0, 3})
     void statusMessage2(int strike) {
         // when
-        output.statusMessage(new GameStatus(0, strike));
+        output.printStatus(new GameStatus(0, strike));
 
         // then
         if (strike == 0)
@@ -73,7 +72,7 @@ class UserOutputTest {
     @Test
     void endMessage() {
         // when
-        output.endMessage();
+        output.printEndMessage();
 
         // then
         assertThat(outputMessage.toString().trim()).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
