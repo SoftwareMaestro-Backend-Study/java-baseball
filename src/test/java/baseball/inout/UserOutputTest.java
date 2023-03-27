@@ -21,8 +21,6 @@ class UserOutputTest {
     void setUpStreams() {
         outputMessage = new ByteArrayOutputStream(); // OutputStream 생성
         System.setOut(new PrintStream(outputMessage)); // 생성한 OutputStream 으로 설정
-
-        output = new UserOutput();
     }
 
     @AfterEach
@@ -33,7 +31,7 @@ class UserOutputTest {
     @Test
     void initMessage() {
         // when
-        output.initMessage();
+        UserOutput.initMessage();
 
         // then
         assertThat(outputMessage.toString().trim()).isEqualTo("숫자 야구 게임을 시작합니다.");
@@ -45,7 +43,7 @@ class UserOutputTest {
     @ValueSource(ints = {0, 1, 2})
     void statusMessage(int strike) {
         // when
-        output.printStatus(new GameStatus(1, strike));
+        UserOutput.printStatus(new GameStatus(1, strike));
 
         // then
         if (strike == 0)
@@ -60,7 +58,7 @@ class UserOutputTest {
     @ValueSource(ints = {0, 3})
     void statusMessage2(int strike) {
         // when
-        output.printStatus(new GameStatus(0, strike));
+        UserOutput.printStatus(new GameStatus(0, strike));
 
         // then
         if (strike == 0)
@@ -72,7 +70,7 @@ class UserOutputTest {
     @Test
     void endMessage() {
         // when
-        output.printEndMessage();
+        UserOutput.printEndMessage();
 
         // then
         assertThat(outputMessage.toString().trim()).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
