@@ -36,7 +36,7 @@ public class GameNumbers {
 
     private static void validateTheNumberOf(List<GameNumber> gameNumbers) {
         if (gameNumbers.size() != THE_NUMBER_OF_GAME_NUMBER) {
-            throw new IllegalArgumentException("3자리 값이 아닙니다.");
+            throw new IllegalArgumentException(String.format("%d자리 값이 아닙니다.", THE_NUMBER_OF_GAME_NUMBER));
         }
     }
 
