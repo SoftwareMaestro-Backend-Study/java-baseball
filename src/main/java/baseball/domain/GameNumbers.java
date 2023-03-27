@@ -40,7 +40,7 @@ public class GameNumbers {
     }
 
     private void validateDuplication(List<GameNumber> gameNumbers) {
-        if (gameNumbers.size() != new HashSet<>(gameNumbers).size()) {
+        if (new HashSet<>(gameNumbers).size() != THE_NUMBER_OF_GAME_NUMBER) {
             throw new IllegalArgumentException("중복되는 값이 포함되어 있습니다.");
         }
     }
