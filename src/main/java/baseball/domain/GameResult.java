@@ -34,11 +34,22 @@ public enum GameResult {
         return this == THREE_STRIKE;
     }
 
-    public int getStrike() {
-        return strike;
-    }
+    public String getResultComment() {
+        if (strike == 0 && ball == 0) {
+            return "낫싱";
+        }
 
-    public int getBall() {
-        return ball;
+        StringBuilder answer = new StringBuilder();
+        if (ball != 0) {
+            answer.append(ball);
+            answer.append("볼 ");
+        }
+
+        if (strike != 0) {
+            answer.append(strike);
+            answer.append("스트라이크");
+        }
+
+        return answer.toString();
     }
 }

@@ -30,33 +30,10 @@ public class Application {
 
             GameResult result = gameService.findResult(playerInput);
 
-            String answer = getResultComment(result);
-            System.out.println(answer);
+            System.out.println(result.getResultComment());
             if (result.isEnd()) {
                 break;
             }
         }
-    }
-
-    private static String getResultComment(GameResult result) {
-        final int strike = result.getStrike();
-        final int ball = result.getBall();
-
-        if (strike == 0 && ball == 0) {
-            return "낫싱";
-        }
-
-        StringBuilder answer = new StringBuilder();
-        if (ball != 0) {
-            answer.append(ball);
-            answer.append("볼 ");
-        }
-
-        if (strike != 0) {
-            answer.append(strike);
-            answer.append("스트라이크");
-        }
-
-        return answer.toString();
     }
 }

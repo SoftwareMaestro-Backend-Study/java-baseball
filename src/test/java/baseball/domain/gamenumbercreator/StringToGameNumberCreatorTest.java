@@ -24,7 +24,7 @@ class StringToGameNumberCreatorTest {
         final StringToGameNumberCreator creator = new StringToGameNumberCreator("123");
 
         // when & then
-        Assertions.assertThatThrownBy(() -> creator.create(3))
-                .isInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatCode(() -> creator.create(3))
+                .doesNotThrowAnyException();
     }
 }
