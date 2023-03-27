@@ -7,31 +7,30 @@ import java.util.List;
 public class GameNumbers {
 
     private static final int THE_NUMBER_OF_GAME_NUMBER = 3;
-    private static final int BALL = 0;
-    private static final int STRIKE = 1;
-    private static final int NOTHING = 2;
 
     private final List<GameNumber> gameNumbers;
 
-    public GameNumbers(List<GameNumber> gameNumbers) {
+    private GameNumbers(List<GameNumber> gameNumbers) {
         validateTheNumberOf(gameNumbers);
         validateDuplication(gameNumbers);
         this.gameNumbers = new ArrayList<>(gameNumbers);
     }
 
-    public int[] getComparingResult(List<Integer> computer) {
-        int[] comparingResult = new int[3];
-        for (int order = 0; order < 3; order++) {
-            int number = gameNumbers.get(order).getValue();
-            if (isBall(computer, order, number)) {
-                comparingResult[BALL]++;
-            } else if (isStrike(computer, order, number)) {
-                comparingResult[STRIKE]++;
-            } else {
-                comparingResult[NOTHING]++;
+    public static GameNumbers from(GameNumberGenerator gameNumberGenerator) {
+        return new GameNumbers(gameNumberGenerator.generate(THE_NUMBER_OF_GAME_NUMBER));
+    }
+
+    public GameResult compare(GameNumbers other) {
+        int strike = 0;
+        int ball = 0;
+        for (int order = 0; order < THE_NUMBER_OF_GAME_NUMBER; order++) {
+            if (isStrike(other, order)) {
+                strike++;
+            } else if (isBall(other, gameNumbers.get(order))) {
+                ball++;
             }
         }
-        return comparingResult;
+        return GameResult.from(strike, ball, THE_NUMBER_OF_GAME_NUMBER);
     }
 
     private static void validateTheNumberOf(List<GameNumber> gameNumbers) {
@@ -46,11 +45,11 @@ public class GameNumbers {
         }
     }
 
-    private boolean isStrike(List<Integer> computer, int order, int number) {
-        return computer.contains(number) && computer.indexOf(number) == order;
+    private boolean isStrike(GameNumbers other, int order) {
+        return this.gameNumbers.get(order).equals(other.gameNumbers.get(order));
     }
 
-    private boolean isBall(List<Integer> computer, int order, int number) {
-        return computer.contains(number) && computer.indexOf(number) != order;
+    private boolean isBall(GameNumbers computer, GameNumber gameNumber) {
+        return computer.gameNumbers.contains(gameNumber);
     }
 }
