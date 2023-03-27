@@ -24,10 +24,6 @@ public class GameNumber {
         return new GameNumber(Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE));
     }
 
-    public int getValue() {
-        return value;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
