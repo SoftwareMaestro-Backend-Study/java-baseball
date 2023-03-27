@@ -32,7 +32,7 @@ public class Application {
 
             String answer = getResultComment(result);
             System.out.println(answer);
-            if (result.equals(GameResult.THREE_STRIKE)) {
+            if (result.isEnd()) {
                 break;
             }
         }
